@@ -178,9 +178,11 @@ class PetWidget(QWidget):
         self.setWindowFlags(
             Qt.FramelessWindowHint
             | Qt.WindowStaysOnTopHint
-            | Qt.Tool                      # pas d'entree dans la barre des taches
+            | Qt.WindowDoesNotAcceptFocus   # ne vole pas le focus
+            | Qt.X11BypassWindowManagerHint # bypass WM → toujours visible
         )
         self.setAttribute(Qt.WA_TranslucentBackground, True)
+        self.setAttribute(Qt.WA_ShowWithoutActivating, True)
 
         self.creature = Creature()
         self.state = SysState()
